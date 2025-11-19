@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #022c22, #065f46);
+  color: #0f172a;
+}
+
+.main-wrapper {
+  margin: 0 auto;
+  padding: 6rem 2rem 3rem;
+  max-width: 1100px;
+}
+
+.upload-card,
+.result-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.upload-card input[type="file"] {
+  display: block;
+  width: 100%;
+  border: 2px dashed #cbd5f5;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  background: rgba(15, 118, 110, 0.05);
+}
+
+.upload-preview {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.upload-preview img {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  max-height: 220px;
+  border: 1px solid #e2e8f0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.actions button,
+.actions a {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.btn-upload {
+  background: #0d9488;
+  color: #fff;
+}
+
+button.btn-predict {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+pre.json-output {
+  background: #0f172a;
+  color: #e0f2fe;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.info-card {
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+}

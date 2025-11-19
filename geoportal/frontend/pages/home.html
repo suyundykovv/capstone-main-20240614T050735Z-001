@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoPortal Crop Lab</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">GeoPortal</div>
+      <div class="nav-toggle">☰</div>
+      <ul>
+        <li><a href="main.html">Overview</a></li>
+        <li><a href="calculator.html">Dashboard</a></li>
+        <li><a href="home.html" class="font-semibold">Crop Lab</a></li>
+        <li><a href="learn_more/potato_early_blight.html">Insights</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="p-8">
+    <section class="text-center max-w-3xl mx-auto">
+      <p class="badge mx-auto">Computer vision ready</p>
+      <h1 class="text-4xl font-bold mt-4">Choose your crop lab</h1>
+      <p class="text-slate-600 mt-3">
+        Upload imagery captured via drones, smartphones, or satellites. GeoPortal streams data to the ML inference layer,
+        highlights potential diseases, and recommends agronomy interventions.
+      </p>
+    </section>
+
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mt-10">
+      <a href="corn.html" class="stat-card text-center hover:-translate-y-1 transition">
+        <h3 class="text-xl font-semibold">Corn Intelligence</h3>
+        <p class="text-slate-500 mt-2">Detect rust, blight, stress.</p>
+      </a>
+      <a href="potato.html" class="stat-card text-center hover:-translate-y-1 transition">
+        <h3 class="text-xl font-semibold">Potato Diagnostics</h3>
+        <p class="text-slate-500 mt-2">Predict late blight severity.</p>
+      </a>
+      <a href="rice.html" class="stat-card text-center hover:-translate-y-1 transition">
+        <h3 class="text-xl font-semibold">Rice Monitoring</h3>
+        <p class="text-slate-500 mt-2">Sheath blight and nitrogen tools.</p>
+      </a>
+      <a href="wheat.html" class="stat-card text-center hover:-translate-y-1 transition">
+        <h3 class="text-xl font-semibold">Wheat Shield</h3>
+        <p class="text-slate-500 mt-2">Stripe rust, drought watch.</p>
+      </a>
+    </section>
+  </main>
+</body>
+</html>

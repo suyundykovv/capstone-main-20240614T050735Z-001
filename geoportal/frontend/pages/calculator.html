@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoPortal Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+BxT43g9TL4zEem2E6Z0wPfuk+qS0bM6H1sPsUy0k=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kGStG6CEfJ0zYwrp+GqzMDPceYjIx1xg0EGzU=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/script.js"></script>
+  <style>
+    #geoMap { height: 420px; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">GeoPortal</div>
+      <div class="nav-toggle">☰</div>
+      <ul>
+        <li><a href="main.html">Overview</a></li>
+        <li><a href="calculator.html" class="font-semibold">Dashboard</a></li>
+        <li><a href="home.html">Crop Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="p-8">
+    <section class="flex-between flex-wrap">
+      <div>
+        <p class="text-sm uppercase tracking-wide text-slate-500">Operational intelligence</p>
+        <h1 class="text-4xl font-bold">Regenerative production dashboard</h1>
+      </div>
+      <button id="quick-download" class="primary" disabled>Quick download</button>
+    </section>
+
+    <section class="map-container mt-8">
+      <div id="geoMap"></div>
+    </section>
+
+    <section class="grid lg:grid-cols-2 gap-8 mt-8">
+      <div class="stat-card">
+        <h2 class="text-2xl font-semibold">Yield velocity</h2>
+        <canvas id="yieldChart"></canvas>
+      </div>
+      <div class="stat-card">
+        <h2 class="text-2xl font-semibold">Sustainability KPIs</h2>
+        <ul class="mt-4 space-y-3 text-slate-600">
+          <li>Δ Soil organic matter: <strong>+0.6%</strong></li>
+          <li>Nitrogen use efficiency: <strong>78%</strong></li>
+          <li>Water productivity: <strong>2.4 kg/m³</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold mb-4">Download field intelligence</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Size</th>
+              <th>Last updated</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="file-table-body">
+            <tr><td colspan="4">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

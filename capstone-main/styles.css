@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: Keeps the background fixed while scrolling */
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Reset margin and padding for the header and nav */
+
+header, nav {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+
+
+.container-topic {
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.container {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Create a 2-column grid */
+    grid-gap: 20px; /* Adjust the gap between items */
+    justify-items: center; /* Center items horizontally */
+}
+
+/* Style for individual topic containers */
+.topic-container {
+    border: 1px solid #ddd;
+    padding: 50px;
+    font-size: larger;
+    width: 90%; /* Increase padding for larger containers */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    justify-content: center;
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Change text color for better readability */
+}
+.topic-container:hover
+{
+    border-radius: 5px ;
+    border: 5px solid #3febc0;
+}
+button:hover
+{
+    border-radius: 5px ;
+    border: 5px solid #3feb76;
+}
+
+.corn 
+{
+    background-image: url('corn.jpg');
+    background-size: cover; /* Cover the entire container with the image */
+    background-position: center;
+} 
+.potato
+{
+    background-image: url('potato.jpg');
+    background-size: cover; /* Cover the entire container with the image */
+    background-position: center;
+} 
+.rice
+{
+    background-image: url('rice.jpg');
+    background-size: cover; /* Cover the entire container with the image */
+    background-position: center;
+} 
+.wheat
+{
+    background-image: url('wheat.jpg');
+    background-size: cover; /* Cover the entire container with the image */
+    background-position: center;
+} 
+
+#selectedImage,#capturedImage {
+    max-width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    max-height: 50vh; /* Set the maximum height to fit the viewport */
+
+}
+
+#captureButton
+{
+    font-size: 15px;
+}
+.input
+{
+    font-size: 15px;
+}
+#recognizeButton {
+    margin-top: 10px;
+    padding: 10px;
+    width: 200px;
+    font-size: 20px;
+}
+
+#result {
+    margin-top: 10px;
+}
+
+
+
+@media (max-width: 768px) 
+{
+    .topic-container
+    {
+        padding: 30px;
+        width:100%;
+        font-size: large;
+    }
+    .container {
+        max-width: 100%;
+        text-align: center;
+        grid-template-columns: repeat(1, 1fr); /* Create a 2-column grid */
+        
+        justify-items: center; /* Center items horizontally */
+    }
+}
+
+@media (max-width: 900px) 
+{
+    .topic-container
+    {
+        padding: 30px;
+        width:100%;
+        font-size: large;
+    }
+}
+
+@media (max-width: 480px) 
+{
+    body {
+        font-size: 16px;
+    }
+
+    .container-topic {
+        max-width: 100%;
+        padding: 20px
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Семейство зерновых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="topic.css">
+    <link rel="stylesheet" type="text/css" href="nav.css">
+</head>
+<body class="wheat">
+    <header>
+        <nav>
+            <div class="logo">Опредение вида урожая</div>
+            <ul class="nav-links">
+                <li><a href="main.html">Главная</a></li>
+                <li><a href="corn.html">Семейство початковых</a></li>
+                <li><a href="potato.html">Семейство цветковых</a></li>
+                <li><a href="rice.html">Семейство круп</a></li>
+                <li><a href="wheat.html">Семейство злаковых</a></li>
+            </ul>
+      
+            <div class="menu-icon">&#9776;</div>
+        </nav>
+    </header>
+        <div class="contain">
+            <div class="container-topic">
+                <div class="refresh-button">
+                    <button id="refreshImage"></button>
+                </div>
+                <h1>Определение семейства зерновых</h1>
+                <div>
+                    <input class="input" type="file" id="imageInput" accept="image/*">
+                    <img class="input" id="selectedImage" src="" alt="Selected Image">
+                    <button id="captureButton">Снять на камеру</button>
+                    <img id="capturedImage" alt="Captured Image" style="display: none;">
+                </div>
+    
+                <button id="recognizeButton">Определить</button>
+                <p id="result">Результаты будут отображены тут</p>
+            </div>
+        
+            <div class="container-topic">
+                <h2>Результат предсказания</h2>
+                <p>Резульат предсказания будет отображен тут</p>
+            </div> 
+            <div class="container-topic">
+                <h2>Предлагаемое удобрение</h2>
+                <p>Предлагаемое удобрение будет отображено тут</p>
+            </div>
+            <div class="container-topic">
+                <h2>Похожие растения</h2>
+                <p>Похожие виды растений</p>
+            </div>
+        </div>
+
+
+
+        <script src="scripte.js"></script>
+</body>
+</html>

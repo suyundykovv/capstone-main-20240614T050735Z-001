@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Comaptible" content="IE=edge">
+	<title>GeoPortal СХОС</title>
+	<meta name="desciption" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+  			if($(window).scrollTop()){
+  			  $('nav').addClass('black');
+ 			 }else {
+ 		   $('nav').removeClass('black');
+ 		 }
+		})
+	</script>
+</head>
+<body>
+<!-- Navigation Bar -->
+	<header id="header">
+		<nav>
+			<div class="logo"><img src="logo.jpg" alt="logo"></div>
+			<ul>
+				<li><a class="active" href="">Home</a></li>
+				<li><a href="#about_section">О нас</a></li>
+				<li><a href="#portfolio_section">Статистика</a></li>
+				<li><a href="#contactus_section">Контакты</a></li>
+				<li><a href="#contactus2_section">Обратная связь</a></li>
+			</ul>
+			<a class="get-started" href="calculator.html">Начать</a>
+			<img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+		</nav>
+		<div class="head-container">
+			<div class="quote">
+				<h1>Добро пожаловать на геопортала Северо-Казахстанской СХОС!</h1>
+    <p>Oнлайн платформа, предназначенная для мониторинга сельскохозяйственных земель.</p>
+				
+			</div>
+			<div class="svg-image">
+				<img src="img.png" alt="svg">
+			</div>
+		</div>
+		<div class="side-menu" id="side-menu">
+			<div class="close" onclick="sideMenu(1)"><img src="images/icon/close.png" alt=""></div>
+			<div class="user">
+				<img src="images/creator/roshan.jpeg" alt="Username">
+				<p>roshank9419</p>
+			</div>
+			<ul>
+				<li><a href="#about_section">About</a></li>
+				<li><a href="#portfolio_section">Статистика</a></li>
+				<li><a href="#services_section">Сервис</a></li>
+				<li><a href="#contactus_section">Contact</a></li>
+				<li><a href="#feedBACK">Feedback</a></li>
+			</ul>
+		</div>
+	</header>
+
+
+<!-- Some Popular Subjects -->
+	<div class="title">
+		<span>Основные функции</span>
+	</div>
+	<br><br>
+	<div class="course">
+		<center><div class="cbox">
+		<div class="det"><a href="subjects/jee.html">Интерактивная карта:
+			Отображение земельных участков;</a></div>
+		<div class="det"><a href="home.html">Определение вида урожая по фото</a></div>
+		<div class="det"><a href="subjects/jee.html#sample_papers">Информационные панели:
+			Панель управления;</a></div>
+		<div class="det"><a href="subjects/quiz.html">Обратная связь и поддержка:
+			Форма обратной связи;</a></div>
+		</div></center>
+		
+	</div>
+
+	
+<!-- ABOUT -->
+	<div class="diffSection" id="about_section">
+		<center><p style="font-size: 50px; padding: 100px">О нас</p></center>
+		<div class="about-content">
+				<div class="side-image">
+					<img class="sideImage" src="img2.jpg" style="width: 350px; height: 300px;">
+				</div>
+				<div class="side-text">
+					<h2>Описание сайта</h2>
+					<p>Геопортал Северо-Казахстанской СХОС – это современная онлайн платформа, предназначенная для мониторинга сельскохозяйственных земель, 
+						анализа данных и предсказания урожайности. Портал предоставляет пользователям доступ к геопространственной информации, визуализированной на интерактивной карте, 
+						а также к аналитическим инструментам для оценки состояния посевов и планирования сельскохозяйственных работ.
+                        </p>
+				</div>
+		</div>
+	</div>
+
+
+<!-- PORTFOLIO -->
+	<div class="diffSection" id="portfolio_section">
+		<center><p style="font-size: 50px; padding: 100px; padding-bottom: 40px;">Северо-Казахстанская область</p></center>
+		<div class="content">
+			<p>
+				Индекс физического объема (ИФО) валовой продукции растениеводства за 2022 год по предварительным данным составил 115%. 
+				Рост ИФО обусловлен увеличением валового сбора зерновых и бобовых культур и овощей в отчетном периоде.			</p>
+		</div>
+	</div>
+	<div class="extra">
+		<p>Статистика собранного урожая за 2022 год:</p>
+		<div class="smbox">
+		<span><center><div class="data">16011,7 тыс г.</div><div class="det">зерновые и бобовые культуры</div></center></span>
+		<span><center><div class="data">3364,6 тыс г.</div><div class="det">масличные культуры</div></center></span>
+		<span><center><div class="data">477,7 тыс г.</div><div class="det">овощи корнеплоды</div></center></span>
+		<span><center><div class="data">23162,1 тыс г.</div><div class="det">общая посевная площадь</div></center></span>
+		</div>
+	</div> 
+
+<!-- CONTACT US -->
+	<div class="diffSection" id="contactus_section">
+		<center><p style="font-size: 50px; padding: 100px">Вы можете обратиться к нам, если столкнулись с проблемой</p></center>
+		<div class="csec"></div>
+		<div class="back-contact">
+			<div class="cc">
+				<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+					<label>First Name <span class="imp">*</span></label><label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
+					<center>
+						<input type="text" name="" style="margin-right: 10px; width: 175px" required="required"><input type="text" name="lname" style="width: 175px" required="required"><br>
+					</center>
+					<label>Email <span class="imp">*</span></label><br>
+					<input type="email" name="mail" style="width: 100%" required="required"><br>
+					<label>Message <span class="imp">*</span></label><br>
+					<input type="text" name="message" style="width: 100%" required="required"><br>
+					<label>Additional Details</label><br>
+					<textarea name="additional"></textarea><br>
+					<button type="submit" id="csubmit">Send Message</button>
+				</form>
+			</div>
+		</div> 
+	</div>
+	
+
+<!-- Feedback -->
+	<div class="diffSection" id="contactus_section">
+		<center><p style="font-size: 50px; padding: 100px">Нам важна ваша обратная связь</p></center>
+		<div class="csec"></div>
+		<div class="back-contact">
+			<div class="cc">
+				<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+					<label>First Name <span class="imp">*</span></label><label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
+					<center>
+						<input type="text" name="" style="margin-right: 10px; width: 175px" required="required"><input type="text" name="lname" style="width: 175px" required="required"><br>
+					</center>
+					<label>Email <span class="imp">*</span></label><br>
+					<input type="email" name="mail" style="width: 100%" required="required"><br>
+					<label>Message <span class="imp">*</span></label><br>
+					<input type="text" name="message" style="width: 100%" required="required"><br>
+					<label>Additional Details</label><br>
+					<textarea name="additional"></textarea><br>
+					<button type="submit" id="csubmit">Send Message</button>
+				</form>
+			</div>
+		</div> 
+	</div>
+
+<!-- Sliding Information -->
+	<marquee style="background: linear-gradient(to right, #FA4B37, #DF2771); margin-top: 50px;" direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="20"><div class="marqu">Благодарим за посещение нашего сайта!</div></marquee>
+
+<!-- FOOTER -->
+	<footer>
+		<div class="footer-container">
+		<div class="l" >
+			<img src="unc.jpg" style="width: 90px;">
+			<br><p> Astana IT University<br></p><br>
+			</div>
+			<div class="left-col">
+				<img src="logo.jpg" style="width: 100px;">
+				<div class="logo"></div>
+			</div>
+			<div class="r"><p>87002712924<br>
+				<p>221186@astanait.edu.kz</p></div>
+		</div>
+	</footer>
+
+</body>
+</html>

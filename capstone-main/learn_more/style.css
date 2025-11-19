@@ -1,0 +1,96 @@
+body {
+    background-image: url('../background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: Keeps the background fixed while scrolling */
+    font-family: Arial, sans-serif;
+  }
+  
+  header, nav {
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+  }
+    /* Style the container for the blog content */
+    .contain {
+      max-width: 70%;
+      margin: 20px auto;
+      margin-top: 70px;
+      margin-bottom: 50px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    /* Style headings and paragraphs */
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .potato
+    {
+        background: url('../potato.jpg');
+        background-size: cover; /* Cover the entire container with the image */
+        background-position: center;
+    }
+    
+    /* Media query for responsive design */
+  
+    @media (max-width: 768px) 
+    {
+    
+      .contain {
+        margin-top: 70px;
+        max-width: 90%;
+        padding: 20px;
+      }
+       
+    }
+    
+    @media (max-width: 1000px) 
+    {
+  
+        .contain
+        {
+            max-width: 90%;
+            margin-top: 70px;
+            margin-bottom: 40px;
+            padding: 20px;  
+        }
+    
+    }
+    
+  
+    /* Add any additional styles as needed for the button */
+    
+    
+    @media (max-width: 480px) 
+    {
+        .contain
+        {
+         max-width: 90%;
+        }
+    }
+    
+    

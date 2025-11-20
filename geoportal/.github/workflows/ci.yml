@@ -1,0 +1,38 @@
+name: GeoPortal Backend CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint
+        run: |
+          cd backend
+          flake8 app tests
+
+      - name: Run unit tests
+        run: |
+          cd backend
+          pytest
+
+      - name: Run smoke test
+        run: |
+          cd backend
+          ./tests/smoke_test.sh

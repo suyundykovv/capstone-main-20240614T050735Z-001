@@ -1,0 +1,21 @@
+{
+  "run_id": "run-20251120-072617",
+  "generated_at": "2025-11-20T07:27:43.698392Z",
+  "rows": 192,
+  "train_rows": 134,
+  "val_rows": 38,
+  "test_rows": 20,
+  "target_column": "yield_kg_per_ha",
+  "numeric_features": [
+    "year",
+    "area",
+    "area_harvested_ha",
+    "production_t",
+    "production_per_area",
+    "area_change_rate",
+    "yield_change_rate"
+  ],
+  "categorical_features": [
+    "crop_type"
+  ]
+}

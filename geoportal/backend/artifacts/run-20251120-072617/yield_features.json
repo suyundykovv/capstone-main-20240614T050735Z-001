@@ -1,0 +1,15 @@
+[
+  "numeric__year",
+  "numeric__area",
+  "numeric__area_harvested_ha",
+  "numeric__production_t",
+  "numeric__production_per_area",
+  "numeric__area_change_rate",
+  "numeric__yield_change_rate",
+  "categorical__crop_type_agricultural_land",
+  "categorical__crop_type_arable_land",
+  "categorical__crop_type_cereals,_primary",
+  "categorical__crop_type_other_land",
+  "categorical__crop_type_permanent_crops",
+  "categorical__crop_type_permanent_meadows_and_pastures"
+]

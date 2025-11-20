@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+
 from PIL import Image
 
 from app.main import DATA_DIR, disease_model, yield_model
@@ -35,11 +36,12 @@ def test_yield_prediction_endpoint(client, monkeypatch):
         "area_harvested_ha": 1000,
         "production_t": 500,
     }
-    response = client.post("/api/predict", json=payload)
+    response = client.post("/api/predict?lang=ru", json=payload)
     assert response.status_code == 200
     body = response.json()
-    for key in ("predicted_yield", "confidence", "units"):
-        assert key in body
+    assert body["lang"] == "ru"
+    assert "recommendations" in body
+    assert body["input_features"]["crop_type"] == "wheat"
 
 
 def test_disease_prediction_endpoint(client, monkeypatch):
@@ -70,7 +72,7 @@ def test_disease_prediction_endpoint(client, monkeypatch):
     assert response.status_code == 200
     body = response.json()
     assert body["mode"] == "disease"
-    assert body["crop"] == "Potato"
+    assert "recommendations" in body
 
 
 def test_files_listing(client):
@@ -82,5 +84,35 @@ def test_files_listing(client):
         assert response.status_code == 200
         files = response.json()
         assert any(item["filename"] == temp_file.name for item in files)
+        assert all("extension" in item for item in files)
     finally:
         temp_file.unlink(missing_ok=True)
+
+
+def test_contact_endpoint(client):
+    payload = {
+        "name": "Agro Lead",
+        "email": "lead@example.com",
+        "company": "GeoCorp",
+        "topic": "Pilot",
+        "message": "Need a pilot in Kostanay.",
+    }
+    response = client.post("/api/hello", json=payload)
+    assert response.status_code == 200
+    assert response.json()["status"] == "received"
+
+
+def test_dashboard_metrics_endpoint(client):
+    response = client.get("/api/dashboard/metrics")
+    assert response.status_code == 200
+    body = response.json()
+    assert "line_series" in body
+    assert "rmse_mae" in body
+
+
+def test_yield_history_endpoint(client):
+    response = client.get("/api/yield/history?limit=10")
+    assert response.status_code == 200
+    body = response.json()
+    assert "history" in body
+    assert "suggested_features" in body

@@ -1,31 +1,40 @@
 version: '3.9'
 services:
-  backend:
-    build:
-      context: ./backend
-    container_name: geoportal-backend
-    env_file: []
-    environment:
-      - DATABASE_URL=postgresql://geoportal:geoportal@db:5432/geoportal
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app/backend
-      - ./uploads:/app/uploads
-      - ./data:/app/data
-    depends_on:
-      - db
-  db:
-    image: postgres:14
-    container_name: geoportal-db
-    restart: unless-stopped
-    environment:
-      - POSTGRES_USER=geoportal
-      - POSTGRES_PASSWORD=geoportal
-      - POSTGRES_DB=geoportal
-    ports:
-      - "5433:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    backend:
+      build:
+        context: ./backend
+      container_name: geoportal-backend
+      env_file: []
+      environment:
+        - DATABASE_URL=postgresql://geoportal:geoportal@db:5432/geoportal
+      ports:
+        - "8000:8000"
+      volumes:
+        - ./backend:/app/backend
+        - ./uploads:/app/uploads
+        - ./data:/app/data
+      depends_on:
+        - db
+    db:
+      image: postgres:14
+      container_name: geoportal-db
+      restart: unless-stopped
+      environment:
+        - POSTGRES_USER=geoportal
+        - POSTGRES_PASSWORD=geoportal
+        - POSTGRES_DB=geoportal
+      ports:
+        - "5433:5432"
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+    frontend:
+      image: nginx:alpine
+      container_name: geoportal-frontend
+      depends_on:
+        - backend
+      ports:
+        - "8080:80"
+      volumes:
+        - ./frontend:/usr/share/nginx/html:ro
 volumes:
   pgdata:

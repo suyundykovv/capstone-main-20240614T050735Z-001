@@ -3,118 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoPortal | Climate-Smart Agriculture Intelligence</title>
+  <title>GeoPortal · Production-ready Geo Intelligence</title>
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '..'
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#003366',
+            teal: '#008080',
+            slate: '#0b1a2b'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
   <link rel="stylesheet" href="../css/nav.css" />
   <link rel="stylesheet" href="../css/style.css" />
-  <script defer src="../js/script.js"></script>
+  <script defer src="../js/app.js"></script>
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">GeoPortal</div>
-      <div class="nav-toggle" aria-label="Toggle navigation">☰</div>
-      <ul>
-        <li><a href="main.html">Overview</a></li>
-        <li><a href="calculator.html">Dashboard</a></li>
-        <li><a href="home.html">Crop Lab</a></li>
-        <li><a href="learn_more/potato_early_blight.html">Insights</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <a class="logo" href="main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="learn_more/potato_early_blight.html" data-i18n="nav.learn">Learn</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
+  <main class="max-w-6xl mx-auto px-4 lg:px-8 py-16">
+    <section class="grid lg:grid-cols-2 gap-10 items-center">
       <div>
-        <div class="badge">Carbon-neutral ready</div>
-        <h1 class="mt-4">GeoPortal — operational intelligence for resilient harvests</h1>
-        <p class="mt-4 text-slate-600 text-lg">
-          Monitor crop health, benchmark yields, share agronomic data, and give every
-          hectare a digital twin powered by spatial analytics, machine learning, and
-          agronomist-approved playbooks.
+        <span class="pill" data-i18n="landing.hero.badge">Carbon-neutral ready</span>
+        <h1 class="text-4xl lg:text-5xl font-extrabold mt-4" data-i18n="landing.hero.title">
+          GeoPortal — operational intelligence for resilient harvests
+        </h1>
+        <p class="mt-4 text-lg text-slate-600 max-w-xl" data-i18n="landing.hero.subtitle">
+          Monitor crop health, benchmark yield risk, and activate agronomy playbooks across every hectare in one control plane.
         </p>
-        <div class="cta">
-          <a class="primary inline-flex items-center justify-center" href="home.html">Launch Crop Lab</a>
-          <a class="inline-flex items-center justify-center font-semibold text-sky-600" href="calculator.html">View dashboard →</a>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <a class="btn-primary" href="crop_lab.html" data-i18n="landing.hero.primary">Launch Crop Lab</a>
+          <a class="btn-secondary" href="dashboard.html" data-i18n="landing.hero.secondary">Open dashboard</a>
+        </div>
+        <div class="stats-grid mt-10">
+            <div class="glass-card">
+              <p class="text-4xl font-bold text-teal" data-i18n="landing.stats.upliftValue">+18%</p>
+              <p class="text-sm text-slate-500" data-i18n="landing.stats.upliftLabel">Yield uplift after two seasons</p>
+            </div>
+            <div class="glass-card">
+              <p class="text-4xl font-bold text-sky-500" data-i18n="landing.stats.accuracyValue">92%</p>
+              <p class="text-sm text-slate-500" data-i18n="landing.stats.accuracyLabel">Disease detection accuracy</p>
+            </div>
         </div>
       </div>
-      <div class="bg-white rounded-3xl shadow-2xl p-6">
-        <img src="../images/hero-fields.svg" alt="Fields" class="w-full" />
-        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
-          <div>
-            <p class="text-4xl font-bold text-emerald-600">+18%</p>
-            <p class="text-slate-500">Yield uplift</p>
+      <div class="glass-card bg-white">
+        <img src="../images/hero-fields.svg" alt="Satellite insights" class="w-full" />
+        <div class="mt-6 space-y-4">
+          <div class="flex justify-between">
+            <span data-i18n="landing.hero.metrics.lead">Lead time on stress alerts</span>
+            <strong>48h</strong>
           </div>
-          <div>
-            <p class="text-4xl font-bold text-sky-500">92%</p>
-            <p class="text-slate-500">Detection accuracy</p>
+          <div class="flex justify-between">
+            <span data-i18n="landing.hero.metrics.farms">Growers onboarded</span>
+            <strong>120+</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="flex-between flex-wrap gap-4">
-        <h2 class="text-3xl font-bold">Platform capability suite</h2>
-        <span class="badge">24/7 cloud-native infrastructure</span>
+    <section class="mt-20">
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <h2 class="text-3xl font-bold" data-i18n="landing.capabilities.title">Enterprise capability suite</h2>
+        <span class="pill" data-i18n="landing.capabilities.badge">24/7 cloud infrastructure</span>
       </div>
-      <div class="card-grid mt-6">
-        <article class="feature-card">
-          <h3 class="text-xl font-semibold mb-2">Spatial Monitoring</h3>
-          <p>Daily NDVI, LST, canopy moisture, and alerts directly from Sentinel & Planet orchestration.</p>
-        </article>
-        <article class="feature-card">
-          <h3 class="text-xl font-semibold mb-2">Predictive Crop Lab</h3>
-          <p>Upload imagery, receive AI insights on diseases, stress factors, and fertilizer strategies.</p>
-        </article>
-        <article class="feature-card">
-          <h3 class="text-xl font-semibold mb-2">Operations Command</h3>
-          <p>Assign field activities, sync soil sampling, and track compliance from one workspace.</p>
-        </article>
-        <article class="feature-card">
-          <h3 class="text-xl font-semibold mb-2">Insights Marketplace</h3>
-          <p>Download agronomic benchmarks, seeding windows, irrigation playbooks, and ESG-ready reports.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="bg-white rounded-3xl mx-6 shadow-xl">
-      <div class="p-8 grid lg:grid-cols-2 gap-8">
-        <div>
-          <h2 class="text-3xl font-bold mb-3">Trusted agronomic data fabric</h2>
-          <p class="text-slate-600">
-            7+ seasons of fertilizer trials, soil moisture transects, and yield mapping make GeoPortal the most
-            complete regional agrifood knowledge base.
+      <div class="grid-cards">
+        <article class="glass-card">
+          <h3 class="text-xl font-semibold" data-i18n="landing.capabilities.monitoring.title">Spatial monitoring</h3>
+          <p class="text-slate-600 mt-2" data-i18n="landing.capabilities.monitoring.body">
+            Daily NDVI, LST, canopy moisture, and anomaly alerts orchestrated from Sentinel, Planet, MODIS, and radar streams.
           </p>
-          <ul class="mt-4 space-y-2 text-slate-700 list-disc list-inside">
-            <li>12,400+ hectares monitored weekly</li>
-            <li>Automated satellite ingestion & QC</li>
-            <li>Role-based API with SSO ready endpoints</li>
-          </ul>
+        </article>
+        <article class="glass-card">
+          <h3 class="text-xl font-semibold" data-i18n="landing.capabilities.lab.title">Predictive Crop Lab</h3>
+          <p class="text-slate-600 mt-2" data-i18n="landing.capabilities.lab.body">
+            Drag & drop imagery and receive interpretability overlays, fertilizer guidance, and routing suggestions for scouts.
+          </p>
+        </article>
+        <article class="glass-card">
+          <h3 class="text-xl font-semibold" data-i18n="landing.capabilities.ops.title">Operations command</h3>
+          <p class="text-slate-600 mt-2" data-i18n="landing.capabilities.ops.body">
+            Synchronize tasks, sampling campaigns, ESG evidence, and carbon interventions with enterprise SSO and audit trails.
+          </p>
+        </article>
+        <article class="glass-card">
+          <h3 class="text-xl font-semibold" data-i18n="landing.capabilities.market.title">Insights marketplace</h3>
+          <p class="text-slate-600 mt-2" data-i18n="landing.capabilities.market.body">
+            Export CSV/XLSX baselines, run KPIs through the API, or plug dashboards into PowerBI/Tableau via secure tokens.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-20 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="glass-card">
+        <h2 class="text-3xl font-bold mb-4" data-i18n="landing.trust.title">Trusted agronomic data fabric</h2>
+        <p class="text-slate-600" data-i18n="landing.trust.body">
+          Seven seasons of fertilizer trials, soil moisture transects, IoT archives, and satellite layers make GeoPortal the most complete Eurasian production dataset.
+        </p>
+        <ul class="mt-6 space-y-3 text-slate-700">
+          <li data-i18n="landing.trust.points.0">12,400+ hectares monitored weekly with automatic QC</li>
+          <li data-i18n="landing.trust.points.1">Role-based API, SSO, and audit-friendly exports</li>
+          <li data-i18n="landing.trust.points.2">PostgreSQL & object storage connectors out-of-the-box</li>
+        </ul>
+      </div>
+      <div class="glass-card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold" data-i18n="landing.trust.table.title">Regional benchmarks</h3>
+          <span class="pill" data-i18n="landing.trust.table.badge">FAOSTAT + field telemetry</span>
         </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Metric</th>
-                <th>Region Median</th>
-                <th>Top Quartile</th>
+                <th data-i18n="landing.trust.table.crop">Crop</th>
+                <th data-i18n="landing.trust.table.median">Region median</th>
+                <th data-i18n="landing.trust.table.top">Top quartile</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Spring wheat</td>
+                <td data-i18n="landing.trust.table.wheat">Spring wheat</td>
                 <td>3.9 t/ha</td>
                 <td>5.1 t/ha</td>
               </tr>
               <tr>
-                <td>Corn silage</td>
+                <td data-i18n="landing.trust.table.corn">Corn silage</td>
                 <td>14.2 t/ha</td>
                 <td>18.7 t/ha</td>
               </tr>
               <tr>
-                <td>Sunflower oilseed</td>
+                <td data-i18n="landing.trust.table.sunflower">Sunflower oilseed</td>
                 <td>2.3 t/ha</td>
                 <td>3.1 t/ha</td>
               </tr>
@@ -124,47 +173,69 @@
       </div>
     </section>
 
-    <section id="contact" class="bg-slate-900 text-white rounded-3xl mx-6 my-10 p-10">
+    <section id="contact" class="mt-20 glass-card bg-navy text-white">
       <div class="grid md:grid-cols-2 gap-10">
         <div>
-          <p class="uppercase tracking-wide text-slate-300">Talk with agronomists</p>
-          <h2 class="text-4xl font-bold mt-3">Deploy GeoPortal in under 10 days</h2>
-          <p class="text-slate-300 mt-4">
-            Upload boundaries, sync IoT sensors, configure alerts, and onboard growers. Our success team provides white-glove implementation.
+          <p class="uppercase tracking-wide text-white/70 text-sm" data-i18n="contact.badge">Talk with agronomists</p>
+          <h2 class="text-4xl font-bold mt-3" data-i18n="contact.title">Deploy GeoPortal in under 10 days</h2>
+          <p class="text-white/80 mt-4" data-i18n="contact.subtitle">
+            Upload boundaries, sync IoT sensors, configure alerts, and onboard growers. Our success desk provides white-glove rollout across markets.
           </p>
         </div>
-        <div>
-          <form id="contact-form" class="bg-white text-slate-900 rounded-2xl p-6">
-            <label for="name" class="font-semibold">Full name</label>
-            <input type="text" id="name" name="name" required />
-            <label for="email" class="font-semibold">Work email</label>
-            <input type="email" id="email" name="email" required />
-            <label for="message" class="font-semibold">Use case</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit" class="primary w-full">Book strategy call</button>
-            <p id="contact-status" class="text-sm text-slate-500 mt-3">We respond within one business day.</p>
-          </form>
-        </div>
+        <form id="contact-form" class="bg-white text-slate-900 rounded-2xl p-6 space-y-4">
+          <div>
+            <label for="name" class="font-semibold" data-i18n="contact.form.nameLabel">Full name</label>
+            <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.namePlaceholder" required />
+          </div>
+          <div>
+            <label for="email" class="font-semibold" data-i18n="contact.form.emailLabel">Work email</label>
+            <input type="email" id="email" name="email" data-i18n-placeholder="contact.form.emailPlaceholder" required />
+          </div>
+          <div>
+            <label for="company" class="font-semibold" data-i18n="contact.form.companyLabel">Company</label>
+            <input type="text" id="company" name="company" data-i18n-placeholder="contact.form.companyPlaceholder" />
+          </div>
+          <div>
+            <label for="topic" class="font-semibold" data-i18n="contact.form.topicLabel">Topic</label>
+            <select id="topic" name="topic">
+              <option value="Pilot" data-i18n="contact.form.topicPilot">Pilot rollout</option>
+              <option value="Data" data-i18n="contact.form.topicData">Data licensing</option>
+              <option value="Support" data-i18n="contact.form.topicSupport">Support</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="font-semibold" data-i18n="contact.form.messageLabel">Use case</label>
+            <textarea id="message" name="message" rows="3" data-i18n-placeholder="contact.form.messagePlaceholder" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full" data-i18n="contact.form.submit">Book strategy call</button>
+          <p class="text-sm text-slate-500" data-contact-status data-i18n="contact.status.ready">We respond within one business day.</p>
+        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
       <div>
         <img src="../images/logo.svg" alt="GeoPortal" width="140" />
-        <p class="mt-3 text-sm text-slate-300">Copyright © GeoPortal 2025</p>
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
       </div>
       <div>
-        <h4 class="font-semibold mb-2">Navigation</h4>
-        <a href="main.html">Overview</a><br />
-        <a href="calculator.html">Dashboard</a><br />
-        <a href="home.html">Crop Lab</a>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="main.html" data-i18n="nav.overview"></a><br />
+        <a href="dashboard.html" data-i18n="nav.dashboard"></a><br />
+        <a href="crop_lab.html" data-i18n="nav.cropLab"></a>
       </div>
       <div>
-        <h4 class="font-semibold mb-2">Support</h4>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
         <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
         <span>+7 (777) 000-1122</span>
+        <p class="mt-3 text-sm">
+          <span data-i18n="footer.models.disease">Disease model</span> ·
+          <span data-model-version="disease">—</span><br />
+          <span data-i18n="footer.models.yield">Yield model</span> ·
+          <span data-model-version="yield">—</span>
+        </p>
       </div>
     </div>
   </footer>

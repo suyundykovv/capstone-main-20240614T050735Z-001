@@ -1,0 +1,20 @@
+{
+  "name": "geoportal",
+  "version": "1.0.0",
+  "description": "GeoPortal is a full-stack demo platform for climate-smart agriculture. It combines a Tailwind-powered frontend, a FastAPI backend, a stub ML inference service, agronomic datasets, and Docker orchestration so you can showcase agronomic analytics end to end.",
+  "private": true,
+  "scripts": {
+    "dev:css": "tailwindcss -c tailwind.config.js -i ./frontend/css/tailwind-input.css -o ./frontend/css/tailwind.css --postcss --watch",
+    "build:css": "tailwindcss -c tailwind.config.js -i ./frontend/css/tailwind-input.css -o ./frontend/css/tailwind.css --postcss --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

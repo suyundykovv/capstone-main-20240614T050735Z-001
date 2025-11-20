@@ -349,36 +349,42 @@
       });
     };
 
-  const buildDashboardFilters = () => {
-    const filters = state.dashboard?.filters;
-    if (!filters) return;
-    const cropSelect = qs('[data-filter="crop"]');
-    const regionSelect = qs('[data-filter="region"]');
-    const yearRange = qs('[data-filter="year"]');
-    const setOptions = (select, options) => {
-      if (!select) return;
-      select.innerHTML = `
-        <option value="all">${Language.t('dashboard.filters.all')}</option>
-        ${options.map((opt) => `<option value="${opt}">${opt}</option>`).join('')}
-      `;
+    const buildDashboardFilters = () => {
+      const filters = state.dashboard?.filters;
+      if (!filters) return;
+      const cropSelect = qs('[data-filter="crop"]');
+      const regionSelect = qs('[data-filter="region"]');
+      const yearRange = qs('[data-filter="year"]');
+      const setOptions = (select, options) => {
+        if (!select) return;
+        select.innerHTML = `
+          <option value="all">${Language.t('dashboard.filters.all')}</option>
+          ${options.map((opt) => `<option value="${opt}">${opt}</option>`).join('')}
+        `;
+      };
+      setOptions(cropSelect, filters.crop_types || []);
+      setOptions(regionSelect, filters.regions || []);
+      if (yearRange && filters.years?.length) {
+        const years = filters.years;
+        yearRange.min = Math.min(...years);
+        yearRange.max = Math.max(...years);
+        yearRange.value = yearRange.max;
+        const yearValueNode = qs('[data-year-value]');
+        if (yearValueNode) {
+          yearValueNode.textContent = yearRange.value;
+        }
+        yearRange.addEventListener('input', () => {
+          const yearValueNodeInner = qs('[data-year-value]');
+          if (yearValueNodeInner) {
+            yearValueNodeInner.textContent = yearRange.value;
+          }
+          renderDashboardCharts();
+        });
+      }
+      [cropSelect, regionSelect].forEach((select) =>
+        select?.addEventListener('change', renderDashboardCharts)
+      );
     };
-    setOptions(cropSelect, filters.crop_types || []);
-    setOptions(regionSelect, filters.regions || []);
-    if (yearRange && filters.years?.length) {
-      const years = filters.years;
-      yearRange.min = Math.min(...years);
-      yearRange.max = Math.max(...years);
-      yearRange.value = yearRange.max;
-      qs('[data-year-value]')?.textContent = yearRange.value;
-      yearRange.addEventListener('input', () => {
-        qs('[data-year-value]')?.textContent = yearRange.value;
-        renderDashboardCharts();
-      });
-    }
-    [cropSelect, regionSelect].forEach((select) =>
-      select?.addEventListener('change', renderDashboardCharts)
-    );
-  };
 
   const getDashboardFilters = () => {
     const crop = qs('[data-filter="crop"]')?.value || 'all';

@@ -1,0 +1,192 @@
+2025-11-20 07:26:17,804 | INFO | train_yield_regressor | Running grid search with 3 folds
+2025-11-20 07:26:22,661 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_metadata.json
+2025-11-20 07:26:22,661 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_features.json
+2025-11-20 07:26:22,682 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_features.json
+2025-11-20 07:26:22,682 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_metadata.json
+2025-11-20 07:26:22,682 | INFO | train_yield_regressor | Persisted trained model and metadata to /workspace/geoportal/backend/artifacts/run-20251120-072617 and /workspace/geoportal/backend/app/models
+2025-11-20 07:26:22,682 | INFO | train_yield_regressor | Training run run-20251120-072617 complete
+2025-11-20 07:26:22,682 | INFO | train_yield_regressor | Stored metadata: {
+  "run_id": "run-20251120-072617",
+  "generated_at": "2025-11-20T07:26:22.637934Z",
+  "model_class": "RandomForestRegressor",
+  "best_params": {
+    "regressor__max_depth": 8,
+    "regressor__min_samples_split": 2,
+    "regressor__n_estimators": 200
+  },
+  "param_grid": {
+    "regressor__n_estimators": [
+      150,
+      200,
+      250
+    ],
+    "regressor__max_depth": [
+      8,
+      10,
+      12
+    ],
+    "regressor__min_samples_split": [
+      2,
+      4,
+      6
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "rmse": 42.07473700319669,
+      "mae": 12.068144736844694,
+      "r2": 0.9466852440222859
+    },
+    "test": {
+      "rmse": 66.16502842485974,
+      "mae": 28.844975000002684,
+      "r2": 0.8510065704689341
+    }
+  },
+  "data": {
+    "train_rows": 134,
+    "val_rows": 38,
+    "test_rows": 20,
+    "target_column": "yield_kg_per_ha",
+    "numeric_features": [
+      "year",
+      "area",
+      "area_harvested_ha",
+      "production_t",
+      "production_per_area",
+      "area_change_rate",
+      "yield_change_rate"
+    ],
+    "categorical_features": [
+      "crop_type"
+    ]
+  }
+}
+2025-11-20 07:26:38,032 | INFO | train_yield_regressor | Running grid search with 3 folds
+2025-11-20 07:26:42,458 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_metadata.json
+2025-11-20 07:26:42,458 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_features.json
+2025-11-20 07:26:42,485 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_features.json
+2025-11-20 07:26:42,485 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_metadata.json
+2025-11-20 07:26:42,485 | INFO | train_yield_regressor | Persisted trained model and metadata to /workspace/geoportal/backend/artifacts/run-20251120-072617 and /workspace/geoportal/backend/app/models
+2025-11-20 07:26:42,485 | INFO | train_yield_regressor | Training run run-20251120-072617 complete
+2025-11-20 07:26:42,485 | INFO | train_yield_regressor | Stored metadata: {
+  "run_id": "run-20251120-072617",
+  "generated_at": "2025-11-20T07:26:42.430310Z",
+  "model_class": "RandomForestRegressor",
+  "best_params": {
+    "regressor__max_depth": 8,
+    "regressor__min_samples_split": 2,
+    "regressor__n_estimators": 200
+  },
+  "param_grid": {
+    "regressor__n_estimators": [
+      150,
+      200,
+      250
+    ],
+    "regressor__max_depth": [
+      8,
+      10,
+      12
+    ],
+    "regressor__min_samples_split": [
+      2,
+      4,
+      6
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "rmse": 42.07473700319669,
+      "mae": 12.068144736844701,
+      "r2": 0.9466852440222859
+    },
+    "test": {
+      "rmse": 66.16502842485971,
+      "mae": 28.84497500000267,
+      "r2": 0.8510065704689342
+    }
+  },
+  "data": {
+    "train_rows": 134,
+    "val_rows": 38,
+    "test_rows": 20,
+    "target_column": "yield_kg_per_ha",
+    "numeric_features": [
+      "year",
+      "area",
+      "area_harvested_ha",
+      "production_t",
+      "production_per_area",
+      "area_change_rate",
+      "yield_change_rate"
+    ],
+    "categorical_features": [
+      "crop_type"
+    ]
+  }
+}
+2025-11-20 07:27:43,702 | INFO | train_yield_regressor | Running grid search with 3 folds
+2025-11-20 07:27:48,184 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_metadata.json
+2025-11-20 07:27:48,185 | INFO | yield_prep | Wrote /workspace/geoportal/backend/artifacts/run-20251120-072617/yield_features.json
+2025-11-20 07:27:48,209 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_features.json
+2025-11-20 07:27:48,209 | INFO | yield_prep | Wrote /workspace/geoportal/backend/app/models/yield_metadata.json
+2025-11-20 07:27:48,209 | INFO | train_yield_regressor | Persisted trained model and metadata to /workspace/geoportal/backend/artifacts/run-20251120-072617 and /workspace/geoportal/backend/app/models
+2025-11-20 07:27:48,209 | INFO | train_yield_regressor | Training run run-20251120-072617 complete
+2025-11-20 07:27:48,210 | INFO | train_yield_regressor | Stored metadata: {
+  "run_id": "run-20251120-072617",
+  "generated_at": "2025-11-20T07:27:48.158005Z",
+  "model_class": "RandomForestRegressor",
+  "best_params": {
+    "regressor__max_depth": 8,
+    "regressor__min_samples_split": 2,
+    "regressor__n_estimators": 200
+  },
+  "param_grid": {
+    "regressor__n_estimators": [
+      150,
+      200,
+      250
+    ],
+    "regressor__max_depth": [
+      8,
+      10,
+      12
+    ],
+    "regressor__min_samples_split": [
+      2,
+      4,
+      6
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "rmse": 42.07473700319669,
+      "mae": 12.068144736844701,
+      "r2": 0.9466852440222859
+    },
+    "test": {
+      "rmse": 66.16502842485974,
+      "mae": 28.844975000002684,
+      "r2": 0.8510065704689341
+    }
+  },
+  "data": {
+    "train_rows": 134,
+    "val_rows": 38,
+    "test_rows": 20,
+    "target_column": "yield_kg_per_ha",
+    "numeric_features": [
+      "year",
+      "area",
+      "area_harvested_ha",
+      "production_t",
+      "production_per_area",
+      "area_change_rate",
+      "yield_change_rate"
+    ],
+    "categorical_features": [
+      "crop_type"
+    ]
+  }
+}

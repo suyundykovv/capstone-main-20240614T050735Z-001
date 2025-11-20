@@ -1,0 +1,57 @@
+{
+  "run_id": "run-20251120-072617",
+  "generated_at": "2025-11-20T07:27:48.158005Z",
+  "model_class": "RandomForestRegressor",
+  "best_params": {
+    "regressor__max_depth": 8,
+    "regressor__min_samples_split": 2,
+    "regressor__n_estimators": 200
+  },
+  "param_grid": {
+    "regressor__n_estimators": [
+      150,
+      200,
+      250
+    ],
+    "regressor__max_depth": [
+      8,
+      10,
+      12
+    ],
+    "regressor__min_samples_split": [
+      2,
+      4,
+      6
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "rmse": 42.07473700319669,
+      "mae": 12.068144736844701,
+      "r2": 0.9466852440222859
+    },
+    "test": {
+      "rmse": 66.16502842485974,
+      "mae": 28.844975000002684,
+      "r2": 0.8510065704689341
+    }
+  },
+  "data": {
+    "train_rows": 134,
+    "val_rows": 38,
+    "test_rows": 20,
+    "target_column": "yield_kg_per_ha",
+    "numeric_features": [
+      "year",
+      "area",
+      "area_harvested_ha",
+      "production_t",
+      "production_per_area",
+      "area_change_rate",
+      "yield_change_rate"
+    ],
+    "categorical_features": [
+      "crop_type"
+    ]
+  }
+}

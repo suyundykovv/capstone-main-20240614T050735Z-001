@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+}
+
+/* Custom component hooks can live here so they are part of the generated bundle.
+   Example:
+   @layer components {
+     .pill {
+       @apply inline-flex items-center gap-2 rounded-full bg-navy/10 px-3 py-1 text-sm font-semibold text-navy;
+     }
+   }
+*/

@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoPortal · Potato Early Blight</title>
-  <script>
-    window.GeoPortalConfig = {
-      apiBase: 'http://localhost:8000',
-      assetBase: '../..'
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { navy: '#003366', teal: '#008080' },
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+    <title>GeoPortal · Potato Early Blight</title>
+    <link rel="icon" type="image/svg+xml" href="../../images/logo.svg" />
+    <link rel="stylesheet" href="../../css/nav.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/tailwind.css" data-tailwind-build="true" />
+    <script>
+      window.GeoPortalConfig = {
+        apiBase: 'http://localhost:8000',
+        assetBase: '../..'
+      };
+      window.__tailwindConfig = {
+        theme: {
+          extend: {
+            colors: { navy: '#003366', teal: '#008080' },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
         }
-      }
-    };
-  </script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+BxT43g9TL4zEem2E6Z0wPfuk+qS0bM6H1sPsUy0k=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kGStG6CEfJ0zYwrp+GqzMDPceYjIx1xg0EGzU=" crossorigin=""></script>
-  <link rel="stylesheet" href="../../css/nav.css" />
-  <link rel="stylesheet" href="../../css/style.css" />
-  <script defer src="../../js/app.js"></script>
+      };
+    </script>
+    <script src="../../js/tailwind-runtime.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script defer src="../../js/app.js"></script>
   <style>
     #insight-map { height: 320px; border-radius: 1.25rem; overflow: hidden; }
   </style>

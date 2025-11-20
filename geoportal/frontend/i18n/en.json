@@ -167,6 +167,68 @@
       "recommendations": "Next best actions"
     }
   },
+    "labIndex": {
+      "badge": "Multi-crop coverage",
+      "title": "Choose your crop lab",
+      "subtitle": "Upload imagery captured via drones, smartphones, or satellites. GeoPortal streams data to the inference layer, highlights potential diseases, and recommends agronomy interventions.",
+      "cards": {
+        "corn": { "badge": "Rust alerts", "title": "Corn Intelligence", "body": "Detect rust, blight, stress." },
+        "wheat": { "badge": "Stripe rust", "title": "Wheat Shield", "body": "Stripe rust & drought watch." },
+        "potato": { "badge": "Blight defense", "title": "Potato Diagnostics", "body": "Predict late blight velocity." },
+        "rice": { "badge": "Paddy focus", "title": "Rice Monitoring", "body": "Sheath blight & nitrogen tools." }
+      },
+      "workflow": {
+        "title": "Standardized workflow",
+        "subtitle": "Each crop module shares the same dropzone, status tracking, and inference actions so agronomists can jump between labs without relearning the UI.",
+        "steps": {
+          "0": "Upload imagery or drag files straight from scouting folders.",
+          "1": "GeoPortal runs detection plus fertilizer heuristics offline if the API is unreachable.",
+          "2": "Share JSON output with advisors or trigger next-best actions."
+        }
+      }
+    },
+    "topicLabs": {
+      "corn": {
+        "badge": "Rust alerts",
+        "title": "Corn Intelligence Lab",
+        "subtitle": "Upload field imagery to detect northern leaf blight, rust, or drought stress. Results stream from the GeoPortal inference engine.",
+        "points": {
+          "0": "Flag low-NDVI parcels for on-site scouting.",
+          "1": "Blend imagery with rainfall anomalies for context.",
+          "2": "Auto-route top alerts to agronomists."
+        }
+      },
+      "wheat": {
+        "badge": "Stripe rust",
+        "title": "Wheat Shield Lab",
+        "subtitle": "Benchmark stripe rust, septoria, and dryness in real time.",
+        "points": {
+          "0": "Overlay NOAA dew points with canopy imagery.",
+          "1": "Trigger alerts when NDVI variance spikes above thresholds.",
+          "2": "Export JSON to agronomy playbooks."
+        }
+      },
+      "potato": {
+        "badge": "Blight defense",
+        "title": "Potato Diagnostics Lab",
+        "subtitle": "Trace foliar infections, evaluate canopy vigor, and get fertilizer advisory for tuber sizing.",
+        "points": {
+          "0": "Quantify early and late blight lesions per hectare.",
+          "1": "Blend imagery with soil moisture transects for fertigation.",
+          "2": "Share JSON with agronomy desks instantly."
+        }
+      },
+      "rice": {
+        "badge": "Paddy insights",
+        "title": "Rice Monitoring Lab",
+        "subtitle": "Surface sheath blight, blast, and nutrient stress while tracking water depth analytics.",
+        "points": {
+          "0": "Combine drone imagery with flood-depth sensors.",
+          "1": "Highlight nitrogen variability zones.",
+          "2": "Export agronomy recommendations instantly."
+        }
+      }
+    },
   "calculator": {
     "hero": {
       "badge": "Yield intelligence",

@@ -1,0 +1,3 @@
+id,run_id,version
+yield,run-20251120-072617,regressor-v4.1
+disease,run-20251120-072617,cnn-v7.0

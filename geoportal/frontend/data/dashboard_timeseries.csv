@@ -1,0 +1,15 @@
+year,region,crop_type,yield,area_harvested_ha,ndvi
+2019,North Kazakhstan,Wheat,3680,108000,0.58
+2020,North Kazakhstan,Wheat,3725,109200,0.60
+2021,North Kazakhstan,Wheat,3850,110500,0.63
+2022,North Kazakhstan,Wheat,3975,112000,0.65
+2023,North Kazakhstan,Wheat,4120,113500,0.67
+2021,Akmola,Corn,14500,42500,0.59
+2022,Akmola,Corn,15200,43800,0.62
+2023,Akmola,Corn,15850,44100,0.64
+2021,Kostanay,Potato,28600,18500,0.71
+2022,Kostanay,Potato,30120,18800,0.72
+2023,Kostanay,Potato,31540,19000,0.74
+2022,Almaty,Rice,6200,9800,0.69
+2023,Almaty,Rice,6480,10000,0.70
+2023,Pavlodar,Pasture,2250,88000,0.57

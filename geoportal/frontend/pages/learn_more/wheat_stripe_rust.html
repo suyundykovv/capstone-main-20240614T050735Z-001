@@ -3,41 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wheat Stripe Rust | GeoPortal Insights</title>
+  <title>GeoPortal · Wheat Stripe Rust</title>
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '../..'
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: '#003366', teal: '#008080' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+BxT43g9TL4zEem2E6Z0wPfuk+qS0bM6H1sPsUy0k=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kGStG6CEfJ0zYwrp+GqzMDPceYjIx1xg0EGzU=" crossorigin=""></script>
   <link rel="stylesheet" href="../../css/nav.css" />
   <link rel="stylesheet" href="../../css/style.css" />
-  <script defer src="../../js/script.js"></script>
+  <script defer src="../../js/app.js"></script>
+  <style>
+    #insight-map { height: 320px; border-radius: 1.25rem; overflow: hidden; }
+  </style>
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">GeoPortal</div>
-      <div class="nav-toggle">☰</div>
-      <ul>
-        <li><a href="../main.html">Overview</a></li>
-        <li><a href="../home.html">Crop Lab</a></li>
-        <li><a href="wheat_stripe_rust.html" class="font-semibold">Insights</a></li>
+      <a class="logo" href="../main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="../main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="../dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="../crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="../calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="wheat_stripe_rust.html" data-i18n="nav.learn">Learn</a></li>
       </ul>
     </nav>
   </header>
-  <main class="max-w-4xl mx-auto p-8 bg-white mt-10 rounded-3xl shadow-xl">
-    <p class="badge">Wheat shield</p>
-    <h1 class="text-4xl font-bold mt-4">Stripe rust containment protocol</h1>
-    <p class="text-slate-600 mt-4">
-      Puccinia striiformis overwinters on volunteer wheat and barley. Cool nights (5–12°C) plus moist mornings trigger rapid pustule expansion.
-    </p>
-    <h2 class="text-2xl font-semibold mt-8">Risk assessment</h2>
-    <p>
-      GeoPortal ingests NOAA dewpoint forecasts and in-field leaf wetness sensor data to map spore germination windows. Alerts fire when degree-hours exceed 350.
-    </p>
-    <h2 class="text-2xl font-semibold mt-8">Control stack</h2>
-    <ul class="list-disc list-inside space-y-2 text-slate-700">
-      <li>Deploy triazole + strobilurin mixes at flag leaf emergence.</li>
-      <li>Maintain 20 m buffer strips with rust-tolerant cultivars.</li>
-      <li>Rotate with chickpea or flax to break the green bridge.</li>
-    </ul>
-    <p class="mt-6 text-slate-500 text-sm">Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk</p>
+
+  <main class="max-w-4xl mx-auto px-4 lg:px-0 py-16">
+    <article class="glass-card">
+      <p class="pill" data-i18n="learn.wheat.badge">Wheat shield</p>
+      <h1 class="text-4xl font-bold mt-4" data-i18n="learn.wheat.title">Stripe rust containment protocol</h1>
+      <p class="text-slate-600 mt-4" data-i18n="learn.wheat.intro">
+        Puccinia striiformis survives on volunteer cereals. Cool nights (5–12 °C) and moist mornings accelerate pustule expansion across tillers.
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8" data-i18n="learn.wheat.riskTitle">Risk assessment</h2>
+      <p class="text-slate-600" data-i18n="learn.wheat.riskBody">
+        GeoPortal blends NOAA dew point forecasts with in-field leaf wetness probes to map germination windows. Alerts trigger when degree-hours exceed 350 and when NDVI variance surpasses 0.12.
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8" data-i18n="learn.wheat.controlTitle">Control stack</h2>
+      <ul class="list-disc list-inside space-y-2 text-slate-700">
+        <li data-i18n="learn.wheat.control.0">Deploy triazole + strobilurin mixes at flag leaf emergence.</li>
+        <li data-i18n="learn.wheat.control.1">Maintain 20 m buffer strips with rust-tolerant cultivars.</li>
+        <li data-i18n="learn.wheat.control.2">Rotate with chickpea or flax to break the green bridge.</li>
+      </ul>
+
+      <div class="mt-10">
+        <h3 class="text-xl font-semibold mb-3" data-i18n="learn.map.title">NDVI & yield overlay</h3>
+        <div id="insight-map" data-lat="51.8" data-lng="67.2" data-ndvi="0.62" data-yield="3.6"></div>
+      </div>
+
+      <p class="mt-6 text-slate-500 text-sm" data-i18n="learn.wheat.meta">Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk</p>
+    </article>
   </main>
+
+  <footer>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="../../images/logo.svg" alt="GeoPortal" width="120" />
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="../main.html" data-i18n="nav.overview"></a><br />
+        <a href="../dashboard.html" data-i18n="nav.dashboard"></a>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
+        <span>+7 (777) 000-1122</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

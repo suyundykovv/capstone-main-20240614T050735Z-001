@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoPortal · Crop Lab</title>
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '..'
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: '#003366', teal: '#008080' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/app.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a class="logo" href="main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="learn_more/potato_early_blight.html" data-i18n="nav.learn">Learn</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 lg:px-8 py-16" data-crop-lab>
+    <section class="mb-12">
+      <p class="pill" data-i18n="cropLab.hero.badge">Computer vision ready</p>
+      <h1 class="text-4xl font-bold mt-4" data-i18n="cropLab.hero.title">Predictive Crop Lab</h1>
+      <p class="text-slate-600 mt-3 max-w-3xl" data-i18n="cropLab.hero.subtitle">
+        Upload drone, phone, or satellite imagery to diagnose crop stress, quantify confidence, and receive fertilizer recommendations in seconds.
+      </p>
+    </section>
+
+    <section class="grid lg:grid-cols-2 gap-10">
+      <div class="space-y-4">
+        <div class="drag-area" data-dropzone>
+          <p class="font-semibold" data-i18n="cropLab.upload.title">Drag & drop imagery</p>
+          <p class="text-sm text-slate-500" data-i18n="cropLab.upload.subtitle">PNG, JPG, or TIFF up to 8 MB</p>
+          <button type="button" class="btn-secondary mt-4" id="lab-upload" onclick="document.getElementById('lab-file').click()" data-i18n="cropLab.upload.button">Select file</button>
+          <input type="file" id="lab-file" accept="image/*" class="hidden" />
+        </div>
+        <p class="text-sm text-slate-500" data-lab-status data-i18n="cropLab.status.ready">Waiting for imagery.</p>
+        <button class="btn-primary w-full" id="lab-predict" data-i18n="cropLab.predict.button">Predict disease</button>
+      </div>
+      <div class="glass-card space-y-4">
+        <img id="lab-preview" src="" alt="Preview" class="w-full rounded-xl hidden" />
+        <div data-lab-result class="space-y-4 hidden">
+          <div>
+            <p class="text-sm uppercase tracking-wide text-slate-500" data-i18n="cropLab.result.crop">Crop</p>
+            <p class="text-2xl font-semibold" data-field="crop">—</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-wide text-slate-500" data-i18n="cropLab.result.disease">Disease</p>
+            <p class="text-2xl font-semibold text-rose-600" data-field="disease">—</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-wide text-slate-500" data-i18n="cropLab.result.fertilizer">Fertilizer suggestion</p>
+            <p class="font-semibold" data-field="fertilizer">—</p>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-wide text-slate-500" data-i18n="cropLab.result.confidence">Confidence</p>
+            <div class="progress-track">
+              <span class="progress-thumb" data-confidence-bar>0%</span>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm uppercase tracking-wide text-slate-500 mb-2" data-i18n="cropLab.result.recommendations">Next best actions</p>
+            <ul class="list-disc list-inside space-y-1" data-lab-recommendations></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="../images/logo.svg" alt="GeoPortal" width="140" />
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="main.html" data-i18n="nav.overview"></a><br />
+        <a href="dashboard.html" data-i18n="nav.dashboard"></a><br />
+        <a href="crop_lab.html" data-i18n="nav.cropLab"></a>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
+        <span>+7 (777) 000-1122</span>
+        <p class="mt-3 text-sm">
+          <span data-i18n="footer.models.disease">Disease model</span> ·
+          <span data-model-version="disease">—</span><br />
+          <span data-i18n="footer.models.yield">Yield model</span> ·
+          <span data-model-version="yield">—</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -22,25 +22,28 @@ geoportal/
 ```
 
 ## Frontend Pages
-- `frontend/pages/main.html` – marketing landing with stats and contact form
-- `frontend/pages/home.html` – select crop workflows
-- `frontend/pages/corn.html` (and potato/rice/wheat) – upload & predict
-- `frontend/pages/calculator.html` – Leaflet map, Chart.js line chart, XLSX catalog
-- `frontend/pages/learn_more/*.html` – agronomic insights articles
+- `frontend/pages/main.html` – multilingual landing with corporate hero, capability cards, trust metrics, and contact form
+- `frontend/pages/dashboard.html` – interactive dashboard with Chart.js line/bar/pie charts, dataset catalog, and filter controls
+- `frontend/pages/crop_lab.html` – drag & drop Crop Lab for disease detection with confidence bar and fertilizer guidance
+- `frontend/pages/calculator.html` – yield scenario form with autofill from history, result card, and history chart
+- `frontend/pages/learn_more/*.html` – localized articles with Leaflet maps for NDVI/yield overlays
 
-All pages share the same navigation and use Tailwind + custom CSS. JavaScript in `frontend/js/script.js` and `frontend/js/scripte.js` handles map/chart rendering, dataset downloads, uploads, and ML predictions.
+All pages share the same navigation bar, Tailwind CSS styling, and Inter font. The global browser logic lives in `frontend/js/app.js`, which powers i18n, form submissions, dataset tables, charts, Leaflet overlays, and ML interactions. Language packs are defined under `frontend/i18n/en.json` and `frontend/i18n/ru.json`.
 
 ## Backend API (FastAPI)
 | Endpoint | Description |
 | --- | --- |
-| `GET /api/hello` | Health probe |
+| `GET /api/hello` | Lightweight ping with timestamp |
+| `POST /api/hello` | Contact form intake, logged to artifacts |
 | `POST /api/upload` | Stores multipart uploads in `/uploads` (8 MB limit) |
-| `POST /api/predict` | `multipart/form-data` → image disease inference, `application/json` → yield regression |
-| `GET /api/files` | Lists available `.xlsx` datasets from `geoportal/data` |
-| `GET /api/files/{filename}` | Streams the requested dataset |
-| `GET /api/models/status` | Reports disease/yield model metadata, load status, and run ids |
+| `POST /api/predict?lang=en|ru` | `multipart/form-data` → disease inference, `application/json` → yield regression (language-aware recommendations + rate limiting) |
+| `GET /api/models/status` | Disease/yield model metadata, load status, versions |
+| `GET /api/files?ext=csv&ext=xlsx` | Lists CSV/XLSX assets from `/data` and `backend/data/kz` |
+| `GET /api/files/{filename}` | Streams the requested dataset with correct mime type |
+| `GET /api/dashboard/metrics` | Aggregated metrics, line/bar/pie data, fertilizer mix, and table rows |
+| `GET /api/yield/history` | Historical yield slices plus autofill suggestions (supports `crop_type`, `region`, `limit`) |
 
-The backend now uses the TensorFlow `plant_model.h5` for disease detection and a trained `RandomForestRegressor` for yield forecasts. Both models expose graceful stubs when assets are missing so demos never break.
+The backend loads TensorFlow `plant_model.h5` for disease detection (with a stub fallback) and the trained RandomForest regressor for yield forecasts. All predictions are logged under `backend/artifacts/<run_id>/logs/predictions.log`, and the `/api/predict` endpoint enforces an 8 MB payload limit plus a per-IP rate limiter.
 
 ### ML Pipeline Overview
 * **Data prep** – `python -m app.data_prep.yield_prep` ingests every CSV under `backend/data/kz`, pivots FAOSTAT features, imputes/standardises numerics, one-hot encodes crop types, and produces 70/20/10 splits plus `yield_features.json`.
@@ -84,13 +87,14 @@ Use any static server from `frontend/`.
 cd frontend
 python3 -m http.server 5500
 ```
-Open `http://localhost:5500/pages/main.html` in a browser.
+Open `http://localhost:5500/pages/main.html`. Language detection auto-selects `ru`/`en` based on the browser, and you can switch via the header dropdown without refreshing.
 
 ### 3. Demo script
-1. Open the landing page → submit contact form (calls `/api/hello`).
-2. Go to Dashboard → confirm Leaflet map and Chart.js chart render. Click “Quick download” or any dataset row: files flow through `/api/files/*`.
-3. Navigate to Crop Lab: pick a crop, upload an image (any JPG/PNG), hit **Upload** then **Predict**. Responses come from `/api/upload` and `/api/predict`.
-4. Visit “Learn More” pages for agronomy content.
+1. Landing (`main.html`): switch languages, inspect stats, send the contact form (`POST /api/hello`).
+2. Dashboard (`dashboard.html`): adjust crop/region/year filters, watch Chart.js widgets update, and download CSV/XLSX assets (served via `/api/files/*`).
+3. Crop Lab (`crop_lab.html`): drag a JPG/PNG into the drop zone and run inference (`POST /api/predict?lang=...`).
+4. Calculator (`calculator.html`): select crop/region, click **Autofill from history** (`GET /api/yield/history`), tweak inputs, and submit to `/api/predict`.
+5. Articles (`learn_more/*.html`): view localized copy plus Leaflet NDVI/yield overlays.
 
 ## Docker Compose
 ```bash
@@ -99,6 +103,7 @@ docker-compose up --build
 Services:
 - `backend` – FastAPI + ML pipeline on port `8000`
 - `db` – PostgreSQL 14 (placeholder for future persistence)
+- `frontend` – nginx serving the static Tailwind app on port `8080`
 
 Volumes:
 - `./backend:/app/backend` (hot reload + trained models)
@@ -111,12 +116,28 @@ No secrets are required. Optional: set `DATABASE_URL` if you plan to use Postgre
 
 ## Testing the API Quickly
 ```bash
+# health + contact
 curl http://localhost:8000/api/hello
-curl -F "file=@frontend/images/hero-fields.svg" http://localhost:8000/api/predict
+curl -X POST -H "Content-Type: application/json" \
+     -d '{"name":"Test User","email":"user@example.com","message":"Need demo."}' \
+     http://localhost:8000/api/hello
+
+# disease inference
+curl -F "file=@frontend/images/hero-fields.svg" \
+     "http://localhost:8000/api/predict?lang=en"
+
+# yield prediction
 curl -H "Content-Type: application/json" \
      -d '{"crop_type":"wheat","year":2024,"area_harvested_ha":1500,"production_t":900}' \
-     http://localhost:8000/api/predict
+     "http://localhost:8000/api/predict?lang=ru"
+
+# dashboards & history
+curl http://localhost:8000/api/dashboard/metrics
+curl "http://localhost:8000/api/yield/history?crop_type=Wheat&limit=8"
+
+# status + datasets
 curl http://localhost:8000/api/models/status
+curl http://localhost:8000/api/files
 ```
 
 ### Testing & CI

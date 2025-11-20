@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoPortal · Executive Dashboard</title>
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '..'
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: '#003366', teal: '#008080' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/app.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a class="logo" href="main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="learn_more/potato_early_blight.html" data-i18n="nav.learn">Learn</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 lg:px-8 py-16" data-dashboard>
+    <section class="flex flex-wrap justify-between gap-6 items-center mb-10">
+      <div>
+        <p class="pill" data-i18n="dashboard.hero.badge">Enterprise telemetry</p>
+        <h1 class="text-3xl lg:text-4xl font-bold mt-4" data-i18n="dashboard.hero.title">Regenerative production dashboard</h1>
+        <p class="text-slate-600 mt-3 max-w-3xl" data-i18n="dashboard.hero.subtitle">
+          Combine satellite signals, IoT probes, and ML scores to orchestrate decisions per crop, region, and season. Filters refresh instantly thanks to the FastAPI metrics endpoint.
+        </p>
+      </div>
+      <div class="glass-card text-sm">
+        <p data-i18n="dashboard.hero.run">Latest run</p>
+        <strong class="text-xl" data-dashboard-run>—</strong>
+      </div>
+    </section>
+
+    <section class="glass-card mb-12">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-semibold mb-1" data-i18n="dashboard.filters.cropLabel">Crop filter</label>
+          <select class="w-full" data-filter="crop"></select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" data-i18n="dashboard.filters.regionLabel">Region filter</label>
+          <select class="w-full" data-filter="region"></select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold mb-1" data-i18n="dashboard.filters.yearLabel">Up to year</label>
+          <div class="flex items-center gap-3">
+            <input type="range" data-filter="year" class="w-full" />
+            <span class="font-semibold" data-year-value>2024</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="glass-card lg:col-span-2 h-[360px]">
+        <h2 class="text-xl font-semibold mb-4" data-i18n="dashboard.charts.yieldTitle">Yield velocity</h2>
+        <canvas id="dashboard-line"></canvas>
+      </div>
+      <div class="glass-card h-[360px]">
+        <h2 class="text-xl font-semibold mb-4" data-i18n="dashboard.charts.pieTitle">Disease distribution</h2>
+        <canvas id="dashboard-pie"></canvas>
+      </div>
+    </section>
+
+    <section class="grid lg:grid-cols-2 gap-8 mb-16">
+      <div class="glass-card h-[320px]">
+        <h2 class="text-xl font-semibold mb-4" data-i18n="dashboard.charts.errorTitle">RMSE vs MAE</h2>
+        <canvas id="dashboard-bar"></canvas>
+      </div>
+      <div class="glass-card">
+        <h2 class="text-xl font-semibold mb-4" data-i18n="dashboard.fertilizer.title">Fertilizer mix focus</h2>
+        <ul class="space-y-3" data-fertilizer-list></ul>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold" data-i18n="dashboard.table.title">Regional intelligence</h2>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="dashboard.table.year">Year</th>
+              <th data-i18n="dashboard.table.region">Region</th>
+              <th data-i18n="dashboard.table.crop">Crop</th>
+              <th data-i18n="dashboard.table.area">Area harvested (ha)</th>
+              <th data-i18n="dashboard.table.yield">Yield (kg/ha)</th>
+            </tr>
+          </thead>
+          <tbody id="insight-table-body">
+            <tr><td colspan="5">…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <div class="flex flex-wrap items-center gap-4 mb-4">
+        <h2 class="text-2xl font-bold" data-i18n="dashboard.files.title">Download CSV/XLSX</h2>
+        <input type="search" class="px-4 py-2 rounded-full" data-file-filter data-i18n-placeholder="dashboard.files.search" />
+        <select class="px-3 py-2 rounded-full" data-file-sort>
+          <option value="name" data-i18n="dashboard.files.sortName">Sort by name</option>
+          <option value="size" data-i18n="dashboard.files.sortSize">Sort by size</option>
+        </select>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="dashboard.files.dataset">Dataset</th>
+              <th data-i18n="dashboard.files.format">Format</th>
+              <th data-i18n="dashboard.files.size">Size</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="file-table-body">
+            <tr><td colspan="4" data-i18n="dashboard.table.loading">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="../images/logo.svg" alt="GeoPortal" width="140" />
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="main.html" data-i18n="nav.overview"></a><br />
+        <a href="dashboard.html" data-i18n="nav.dashboard"></a><br />
+        <a href="crop_lab.html" data-i18n="nav.cropLab"></a>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
+        <span>+7 (777) 000-1122</span>
+        <p class="mt-3 text-sm">
+          <span data-i18n="footer.models.disease">Disease model</span> ·
+          <span data-model-version="disease">—</span><br />
+          <span data-i18n="footer.models.yield">Yield model</span> ·
+          <span data-model-version="yield">—</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

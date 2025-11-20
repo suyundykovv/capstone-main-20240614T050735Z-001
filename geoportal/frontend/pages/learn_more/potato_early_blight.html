@@ -3,44 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Potato Early Blight | GeoPortal Insights</title>
+  <title>GeoPortal · Potato Early Blight</title>
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '../..'
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { navy: '#003366', teal: '#008080' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+BxT43g9TL4zEem2E6Z0wPfuk+qS0bM6H1sPsUy0k=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7kGStG6CEfJ0zYwrp+GqzMDPceYjIx1xg0EGzU=" crossorigin=""></script>
   <link rel="stylesheet" href="../../css/nav.css" />
   <link rel="stylesheet" href="../../css/style.css" />
-  <script defer src="../../js/script.js"></script>
+  <script defer src="../../js/app.js"></script>
+  <style>
+    #insight-map { height: 320px; border-radius: 1.25rem; overflow: hidden; }
+  </style>
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">GeoPortal</div>
-      <div class="nav-toggle">☰</div>
-      <ul>
-        <li><a href="../main.html">Overview</a></li>
-        <li><a href="../home.html">Crop Lab</a></li>
-        <li><a href="potato_early_blight.html" class="font-semibold">Insights</a></li>
+      <a class="logo" href="../main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="../main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="../dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="../crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="../calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="potato_early_blight.html" data-i18n="nav.learn">Learn</a></li>
       </ul>
     </nav>
   </header>
-  <main class="max-w-4xl mx-auto p-8 bg-white mt-10 rounded-3xl shadow-xl">
-    <p class="badge">Potato playbook</p>
-    <h1 class="text-4xl font-bold mt-4">Early blight suppression blueprint</h1>
-    <p class="text-slate-600 mt-4">
-      Alternaria solani thrives under warm temperatures (24–29°C) and leaf wetness periods longer than 12 hours. Crop stress,
-      hail, or mechanical damage accelerate lesion growth.
-    </p>
-    <h2 class="text-2xl font-semibold mt-8">Scouting signals</h2>
-    <ul class="list-disc list-inside text-slate-700 space-y-2">
-      <li>Target lesions (brown concentric rings) starting on lower canopy.</li>
-      <li>Premature defoliation on K-deficient soils.</li>
-      <li>Needle-like sporulation under UV flashlight.</li>
-    </ul>
-    <h2 class="text-2xl font-semibold mt-8">GeoPortal recommendations</h2>
-    <ol class="list-decimal list-inside text-slate-700 space-y-2">
-      <li>Deploy protectant fungicides before forecasted humidity spikes.</li>
-      <li>Maintain N:K ratios at 1:1.2 during bulking stage.</li>
-      <li>Upload canopy imagery weekly—Crop Lab tracks lesion velocity.</li>
-    </ol>
-    <p class="mt-6 text-slate-500 text-sm">Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk</p>
+
+  <main class="max-w-4xl mx-auto px-4 lg:px-0 py-16">
+    <article class="glass-card">
+      <p class="pill" data-i18n="learn.potato.badge">Potato playbook</p>
+      <h1 class="text-4xl font-bold mt-4" data-i18n="learn.potato.title">Early blight suppression blueprint</h1>
+      <p class="text-slate-600 mt-4" data-i18n="learn.potato.intro">
+        Alternaria solani thrives in warm (24–29 °C) canopies with leaf wetness greater than 12 hours. Stress, hail, and mechanical injury accelerate lesion expansion.
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8" data-i18n="learn.potato.scoutingTitle">Scouting signals</h2>
+      <ul class="list-disc list-inside text-slate-700 space-y-2">
+        <li data-i18n="learn.potato.scouting.0">Target lesions with brown concentric rings emerge on lower canopy.</li>
+        <li data-i18n="learn.potato.scouting.1">K-deficient parcels defoliate prematurely.</li>
+        <li data-i18n="learn.potato.scouting.2">Needle-like sporulation visible under UV flashlight.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8" data-i18n="learn.potato.recoTitle">GeoPortal recommendations</h2>
+      <ol class="list-decimal list-inside text-slate-700 space-y-2">
+        <li data-i18n="learn.potato.reco.0">Deploy protectant fungicides before humidity spikes forecasted by the dashboard.</li>
+        <li data-i18n="learn.potato.reco.1">Maintain N:K ratios at 1:1.2 during tuber bulking.</li>
+        <li data-i18n="learn.potato.reco.2">Upload canopy imagery weekly — Crop Lab tracks lesion velocity.</li>
+      </ol>
+
+      <div class="mt-10">
+        <h3 class="text-xl font-semibold mb-3" data-i18n="learn.map.title">NDVI & yield overlay</h3>
+        <div id="insight-map" data-lat="52.5" data-lng="70.1" data-ndvi="0.68" data-yield="4.2"></div>
+      </div>
+
+      <p class="mt-6 text-slate-500 text-sm" data-i18n="learn.potato.meta">Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk</p>
+    </article>
   </main>
+
+  <footer>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="../../images/logo.svg" alt="GeoPortal" width="120" />
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="../main.html" data-i18n="nav.overview"></a><br />
+        <a href="../dashboard.html" data-i18n="nav.dashboard"></a>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
+        <span>+7 (777) 000-1122</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,264 @@
+{
+  "nav": {
+    "brand": "GeoPortal",
+    "overview": "Overview",
+    "dashboard": "Dashboard",
+    "cropLab": "Crop Lab",
+    "calculator": "Calculator",
+    "learn": "Learn"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Carbon-neutral ready",
+      "title": "GeoPortal — operational intelligence for resilient harvests",
+      "subtitle": "Monitor crop health, benchmark yield risk, and activate agronomy playbooks across every hectare in one control plane.",
+      "primary": "Launch Crop Lab",
+      "secondary": "Open dashboard",
+      "metrics": {
+        "lead": "Lead time on stress alerts",
+        "farms": "Growers onboarded"
+      }
+    },
+    "stats": {
+      "upliftValue": "+18%",
+      "upliftLabel": "Yield uplift after two seasons",
+      "accuracyValue": "92%",
+      "accuracyLabel": "Disease detection accuracy"
+    },
+    "capabilities": {
+      "title": "Enterprise capability suite",
+      "badge": "24/7 cloud infrastructure",
+      "monitoring": {
+        "title": "Spatial monitoring",
+        "body": "Daily NDVI, LST, canopy moisture, and anomaly alerts orchestrated from Sentinel, Planet, MODIS, and radar streams."
+      },
+      "lab": {
+        "title": "Predictive Crop Lab",
+        "body": "Drag & drop imagery and receive interpretability overlays, fertilizer guidance, and routing suggestions for scouts."
+      },
+      "ops": {
+        "title": "Operations command",
+        "body": "Synchronize tasks, sampling campaigns, ESG evidence, and carbon interventions with enterprise SSO and audit trails."
+      },
+      "market": {
+        "title": "Insights marketplace",
+        "body": "Export CSV/XLSX baselines, run KPIs through the API, or plug dashboards into PowerBI/Tableau via secure tokens."
+      }
+    },
+    "trust": {
+      "title": "Trusted agronomic data fabric",
+      "body": "Seven seasons of fertilizer trials, soil moisture transects, IoT archives, and satellite layers make GeoPortal the most complete Eurasian production dataset.",
+      "points": {
+        "0": "12,400+ hectares monitored weekly with automatic QC",
+        "1": "Role-based API, SSO, and audit-friendly exports",
+        "2": "PostgreSQL & object storage connectors out-of-the-box"
+      },
+      "table": {
+        "title": "Regional benchmarks",
+        "badge": "FAOSTAT + field telemetry",
+        "crop": "Crop",
+        "median": "Region median",
+        "top": "Top quartile",
+        "wheat": "Spring wheat",
+        "corn": "Corn silage",
+        "sunflower": "Sunflower oilseed"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Talk with agronomists",
+    "title": "Deploy GeoPortal in under 10 days",
+    "subtitle": "Upload boundaries, sync IoT sensors, configure alerts, and onboard growers. Our success desk provides white-glove rollout across markets.",
+    "form": {
+      "nameLabel": "Full name",
+      "namePlaceholder": "Jane Agro",
+      "emailLabel": "Work email",
+      "emailPlaceholder": "name@enterprise.com",
+      "companyLabel": "Company",
+      "companyPlaceholder": "GeoFoods",
+      "topicLabel": "Topic",
+      "topicPilot": "Pilot rollout",
+      "topicData": "Data licensing",
+      "topicSupport": "Support",
+      "messageLabel": "Use case",
+      "messagePlaceholder": "Share acres, crops, and outcomes",
+      "submit": "Book strategy call"
+    },
+    "status": {
+      "ready": "We respond within one business day.",
+      "sending": "Sending...",
+      "success": "Thanks — our agronomists will reach out shortly.",
+      "error": "Something went wrong. Try again later."
+    }
+  },
+  "dashboard": {
+    "hero": {
+      "badge": "Enterprise telemetry",
+      "title": "Regenerative production dashboard",
+      "subtitle": "Combine satellite signals, IoT probes, and ML scores to orchestrate decisions per crop, region, and season.",
+      "run": "Latest run"
+    },
+    "filters": {
+      "cropLabel": "Crop filter",
+      "regionLabel": "Region filter",
+      "yearLabel": "Up to year",
+      "all": "All"
+    },
+    "charts": {
+      "yieldTitle": "Yield velocity",
+      "pieTitle": "Disease distribution",
+      "errorTitle": "RMSE vs MAE",
+      "yield": "Yield (kg/ha)"
+    },
+    "fertilizer": {
+      "title": "Fertilizer mix focus"
+    },
+    "table": {
+      "title": "Regional intelligence",
+      "year": "Year",
+      "region": "Region",
+      "crop": "Crop",
+      "area": "Area harvested (ha)",
+      "yield": "Yield (kg/ha)",
+      "empty": "No records available for this filter set.",
+      "loading": "Loading…",
+      "download": "Download",
+      "error": "Unable to load datasets."
+    },
+    "files": {
+      "title": "Download CSV/XLSX",
+      "search": "Search datasets",
+      "sortName": "Sort by name",
+      "sortSize": "Sort by size",
+      "dataset": "Dataset",
+      "format": "Format",
+      "size": "Size"
+    }
+  },
+  "models": {
+    "pending": "Pending"
+  },
+  "cropLab": {
+    "hero": {
+      "badge": "Computer vision ready",
+      "title": "Predictive Crop Lab",
+      "subtitle": "Upload drone, phone, or satellite imagery to diagnose crop stress, quantify confidence, and receive fertilizer recommendations."
+    },
+    "upload": {
+      "title": "Drag & drop imagery",
+      "subtitle": "PNG, JPG, or TIFF up to 8 MB",
+      "button": "Select file"
+    },
+    "predict": {
+      "button": "Predict disease"
+    },
+    "status": {
+      "ready": "Waiting for imagery.",
+      "missing": "Please add an image first.",
+      "predicting": "Running inference...",
+      "done": "Prediction complete.",
+      "error": "Prediction failed. Try again."
+    },
+    "result": {
+      "crop": "Crop",
+      "disease": "Disease",
+      "fertilizer": "Fertilizer suggestion",
+      "confidence": "Confidence",
+      "recommendations": "Next best actions"
+    }
+  },
+  "calculator": {
+    "hero": {
+      "badge": "Yield intelligence",
+      "title": "Scenario-based yield prediction",
+      "subtitle": "Feed agronomic context into the geo-regressor, auto-fill historical baselines, and benchmark new management tactics with confidence scoring."
+    },
+    "form": {
+      "crop": "Crop",
+      "region": "Region",
+      "year": "Year",
+      "area": "Area harvested (ha)",
+      "production": "Production (t)",
+      "temperature": "Avg. temperature (°C)",
+      "rainfall": "Rainfall (mm)",
+      "ndvi": "NDVI",
+      "fertilizer": "Fertilizer (kg/ha)",
+      "areaChange": "Area change rate",
+      "yieldChange": "Yield change rate",
+      "autofill": "Autofill from history",
+      "submit": "Predict yield"
+    },
+    "crops": {
+      "wheat": "Wheat",
+      "corn": "Corn",
+      "rice": "Rice",
+      "potato": "Potato",
+      "pasture": "Pasture"
+    },
+    "result": {
+      "prediction": "Predicted yield (kg/ha)",
+      "confidence": "Confidence",
+      "model": "Model version",
+      "recommendations": "Recommendations",
+      "echo": "Input echo"
+    },
+    "history": {
+      "title": "Historical baselines",
+      "year": "Year",
+      "region": "Region",
+      "crop": "Crop",
+      "yield": "Yield (kg/ha)",
+      "loading": "Loading…",
+      "empty": "No history available for this crop."
+    },
+    "charts": {
+      "history": "Historical yield"
+    }
+  },
+  "learn": {
+    "map": {
+      "title": "NDVI & yield overlay"
+    },
+    "potato": {
+      "badge": "Potato playbook",
+      "title": "Early blight suppression blueprint",
+      "intro": "Alternaria solani thrives in warm (24–29 °C) canopies with leaf wetness greater than 12 hours. Stress, hail, and mechanical injury accelerate lesion expansion.",
+      "scoutingTitle": "Scouting signals",
+      "scouting": {
+        "0": "Target lesions with brown concentric rings emerge on lower canopy.",
+        "1": "K-deficient parcels defoliate prematurely.",
+        "2": "Needle-like sporulation visible under UV flashlight."
+      },
+      "recoTitle": "GeoPortal recommendations",
+      "reco": {
+        "0": "Deploy protectant fungicides before humidity spikes forecasted by the dashboard.",
+        "1": "Maintain N:K ratios at 1:1.2 during tuber bulking.",
+        "2": "Upload canopy imagery weekly — Crop Lab tracks lesion velocity."
+      },
+      "meta": "Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk"
+    },
+    "wheat": {
+      "badge": "Wheat shield",
+      "title": "Stripe rust containment protocol",
+      "intro": "Puccinia striiformis survives on volunteer cereals. Cool nights (5–12 °C) and moist mornings accelerate pustule expansion across tillers.",
+      "riskTitle": "Risk assessment",
+      "riskBody": "GeoPortal blends NOAA dew point forecasts with in-field leaf wetness probes to map germination windows. Alerts trigger when degree-hours exceed 350 and when NDVI variance surpasses 0.12.",
+      "controlTitle": "Control stack",
+      "control": {
+        "0": "Deploy triazole + strobilurin mixes at flag leaf emergence.",
+        "1": "Maintain 20 m buffer strips with rust-tolerant cultivars.",
+        "2": "Rotate with chickpea or flax to break the green bridge."
+      },
+      "meta": "Last updated: Feb 2025 · Author: GeoPortal Agronomy Desk"
+    }
+  },
+  "footer": {
+    "tagline": "Global agronomic intelligence since 2016.",
+    "nav": "Navigation",
+    "contact": "Contact",
+    "models": {
+      "disease": "Disease model",
+      "yield": "Yield model"
+    }
+  }
+}

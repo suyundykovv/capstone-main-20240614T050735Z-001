@@ -1,0 +1,5 @@
+/*
+ * Tailwind build artifact placeholder.
+ * Run `npm install` followed by `npx tailwindcss -i ./frontend/css/style.css -o ./frontend/css/tailwind.css --minify`
+ * (or use the npm script `npm run build:css`) to regenerate this file for production deploys.
+ */

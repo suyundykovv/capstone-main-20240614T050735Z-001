@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoPortal · Yield Calculator</title>
-  <script>
-    window.GeoPortalConfig = {
-      apiBase: 'http://localhost:8000',
-      assetBase: '..'
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { navy: '#003366', teal: '#008080' },
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+    <title>GeoPortal · Yield Calculator</title>
+    <link rel="icon" type="image/svg+xml" href="../images/logo.svg" />
+    <link rel="stylesheet" href="../css/nav.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/tailwind.css" data-tailwind-build="true" />
+    <script>
+      window.GeoPortalConfig = {
+        apiBase: 'http://localhost:8000',
+        assetBase: '..'
+      };
+      window.__tailwindConfig = {
+        theme: {
+          extend: {
+            colors: { navy: '#003366', teal: '#008080' },
+            fontFamily: { sans: ['Inter', 'sans-serif'] }
+          }
         }
-      }
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  <link rel="stylesheet" href="../css/nav.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <script defer src="../js/app.js"></script>
+      };
+    </script>
+    <script src="../js/tailwind-runtime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script defer src="../js/app.js"></script>
 </head>
 <body>
   <header>

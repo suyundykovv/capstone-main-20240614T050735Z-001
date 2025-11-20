@@ -3,54 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoPortal Crop Lab</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>GeoPortal · Crop Lab Directory</title>
+  <link rel="icon" type="image/svg+xml" href="../images/logo.svg" />
   <link rel="stylesheet" href="../css/nav.css" />
   <link rel="stylesheet" href="../css/style.css" />
-  <script defer src="../js/script.js"></script>
+  <link rel="stylesheet" href="../css/tailwind.css" data-tailwind-build="true" />
+  <script>
+    window.GeoPortalConfig = {
+      apiBase: 'http://localhost:8000',
+      assetBase: '..'
+    };
+    window.__tailwindConfig = {
+      theme: {
+        extend: {
+          colors: { navy: '#003366', teal: '#008080', slate: '#0b1a2b' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <script src="../js/tailwind-runtime.js"></script>
+  <script defer src="../js/app.js"></script>
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">GeoPortal</div>
-      <div class="nav-toggle">☰</div>
-      <ul>
-        <li><a href="main.html">Overview</a></li>
-        <li><a href="calculator.html">Dashboard</a></li>
-        <li><a href="home.html" class="font-semibold">Crop Lab</a></li>
-        <li><a href="learn_more/potato_early_blight.html">Insights</a></li>
+      <a class="logo" href="main.html" data-i18n="nav.brand">GeoPortal</a>
+      <div class="flex items-center gap-4">
+        <select id="language-switcher" class="bg-white/10 border border-white/30 rounded-full px-3 py-1 text-sm">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+        </select>
+        <div class="nav-toggle" data-role="nav-toggle" aria-label="Toggle navigation">☰</div>
+      </div>
+      <ul class="hidden lg:flex" data-role="nav-menu">
+        <li><a href="main.html" data-i18n="nav.overview">Overview</a></li>
+        <li><a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a></li>
+        <li><a href="crop_lab.html" data-i18n="nav.cropLab">Crop Lab</a></li>
+        <li><a href="calculator.html" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="learn_more/potato_early_blight.html" data-i18n="nav.learn">Learn</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="p-8">
+  <main class="max-w-6xl mx-auto px-4 lg:px-8 py-16">
     <section class="text-center max-w-3xl mx-auto">
-      <p class="badge mx-auto">Computer vision ready</p>
-      <h1 class="text-4xl font-bold mt-4">Choose your crop lab</h1>
-      <p class="text-slate-600 mt-3">
-        Upload imagery captured via drones, smartphones, or satellites. GeoPortal streams data to the ML inference layer,
-        highlights potential diseases, and recommends agronomy interventions.
+      <p class="pill mx-auto" data-i18n="labIndex.badge">Multi-crop coverage</p>
+      <h1 class="text-4xl font-bold mt-4" data-i18n="labIndex.title">Choose your crop lab</h1>
+      <p class="text-slate-600 mt-3" data-i18n="labIndex.subtitle">
+        Upload imagery captured via drones, smartphones, or satellites. GeoPortal streams data to the ML inference layer.
       </p>
     </section>
 
     <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mt-10">
-      <a href="corn.html" class="stat-card text-center hover:-translate-y-1 transition">
-        <h3 class="text-xl font-semibold">Corn Intelligence</h3>
-        <p class="text-slate-500 mt-2">Detect rust, blight, stress.</p>
+      <a href="corn.html" class="glass-card text-left hover:-translate-y-1 transition">
+        <p class="pill mb-4" data-i18n="labIndex.cards.corn.badge">Rust alerts</p>
+        <h3 class="text-xl font-semibold" data-i18n="labIndex.cards.corn.title">Corn Intelligence</h3>
+        <p class="text-slate-500 mt-2" data-i18n="labIndex.cards.corn.body">Detect rust, blight, stress.</p>
       </a>
-      <a href="potato.html" class="stat-card text-center hover:-translate-y-1 transition">
-        <h3 class="text-xl font-semibold">Potato Diagnostics</h3>
-        <p class="text-slate-500 mt-2">Predict late blight severity.</p>
+      <a href="wheat.html" class="glass-card text-left hover:-translate-y-1 transition">
+        <p class="pill mb-4" data-i18n="labIndex.cards.wheat.badge">Stripe rust</p>
+        <h3 class="text-xl font-semibold" data-i18n="labIndex.cards.wheat.title">Wheat Shield</h3>
+        <p class="text-slate-500 mt-2" data-i18n="labIndex.cards.wheat.body">Stripe rust & drought watch.</p>
       </a>
-      <a href="rice.html" class="stat-card text-center hover:-translate-y-1 transition">
-        <h3 class="text-xl font-semibold">Rice Monitoring</h3>
-        <p class="text-slate-500 mt-2">Sheath blight and nitrogen tools.</p>
+      <a href="potato.html" class="glass-card text-left hover:-translate-y-1 transition">
+        <p class="pill mb-4" data-i18n="labIndex.cards.potato.badge">Blight defense</p>
+        <h3 class="text-xl font-semibold" data-i18n="labIndex.cards.potato.title">Potato Diagnostics</h3>
+        <p class="text-slate-500 mt-2" data-i18n="labIndex.cards.potato.body">Predict late blight velocity.</p>
       </a>
-      <a href="wheat.html" class="stat-card text-center hover:-translate-y-1 transition">
-        <h3 class="text-xl font-semibold">Wheat Shield</h3>
-        <p class="text-slate-500 mt-2">Stripe rust, drought watch.</p>
+      <a href="rice.html" class="glass-card text-left hover:-translate-y-1 transition">
+        <p class="pill mb-4" data-i18n="labIndex.cards.rice.badge">Paddy focus</p>
+        <h3 class="text-xl font-semibold" data-i18n="labIndex.cards.rice.title">Rice Monitoring</h3>
+        <p class="text-slate-500 mt-2" data-i18n="labIndex.cards.rice.body">Sheath blight & nitrogen tools.</p>
       </a>
     </section>
+
+    <section class="glass-card mt-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold mb-4" data-i18n="labIndex.workflow.title">Standardized workflow</h2>
+          <p class="text-slate-600" data-i18n="labIndex.workflow.subtitle">
+            Each crop module shares the same dropzone, status tracking, and inference actions so agronomists can jump between labs without relearning the UI.
+          </p>
+        </div>
+        <ul class="space-y-3 text-slate-600">
+          <li class="flex items-start gap-3">
+            <span class="text-teal font-semibold">01</span>
+            <span data-i18n="labIndex.workflow.steps.0">Upload imagery or drag files straight from scouting folders.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-teal font-semibold">02</span>
+            <span data-i18n="labIndex.workflow.steps.1">GeoPortal runs detection plus fertilizer heuristics offline if the API is unreachable.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-teal font-semibold">03</span>
+            <span data-i18n="labIndex.workflow.steps.2">Share JSON output with advisors or trigger next-best actions.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="../images/logo.svg" alt="GeoPortal" width="140" />
+        <p class="mt-3 text-sm" data-i18n="footer.tagline">Global agronomic intelligence since 2016.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.nav">Navigation</h4>
+        <a href="main.html" data-i18n="nav.overview"></a><br />
+        <a href="dashboard.html" data-i18n="nav.dashboard"></a><br />
+        <a href="crop_lab.html" data-i18n="nav.cropLab"></a>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2" data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:support@geoportal.dev">support@geoportal.dev</a><br />
+        <span>+7 (777) 000-1122</span>
+        <p class="mt-3 text-sm">
+          <span data-i18n="footer.models.disease">Disease model</span> ·
+          <span data-model-version="disease">—</span><br />
+          <span data-i18n="footer.models.yield">Yield model</span> ·
+          <span data-model-version="yield">—</span>
+        </p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

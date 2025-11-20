@@ -1,0 +1,4 @@
+label,rmse,mae
+Yield regressor v4,0.42,0.27
+Disease CNN v7,0.36,0.22
+Soil moisture LSTM,0.31,0.19

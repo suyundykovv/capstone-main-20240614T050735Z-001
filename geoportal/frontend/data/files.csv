@@ -1,0 +1,5 @@
+display_name,filename,extension,size_kb
+FAOSTAT Wheat 2024,faostat_wheat_2024.csv,csv,1280
+Satellite NDVI Tiles 2023,q2_ndvi_tiles.zip,zip,54200
+Irrigation Sensors Log,irrigation_logs.xlsx,xlsx,876
+Fertilizer Trials Summary,fertilizer_trials.pdf,pdf,420

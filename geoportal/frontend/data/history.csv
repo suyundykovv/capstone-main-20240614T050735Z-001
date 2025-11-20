@@ -1,0 +1,9 @@
+year,region,crop_type,yield,area_harvested_ha,production_t,temperature,rainfall,ndvi,fertilizer_amount,area_change_rate,yield_change_rate
+2023,North Kazakhstan,Wheat,4120,113500,468000,16.4,325,0.67,96,0.012,0.045
+2022,North Kazakhstan,Wheat,3975,112000,444000,15.8,318,0.65,92,0.006,0.032
+2021,North Kazakhstan,Wheat,3850,110500,425000,15.3,310,0.63,88,0.004,0.021
+2023,Akmola,Corn,15850,44100,698000,20.5,410,0.64,120,0.015,0.038
+2022,Akmola,Corn,15200,43800,665000,20.1,402,0.62,118,0.009,0.029
+2023,Kostanay,Potato,31540,19000,59900,17.2,360,0.74,140,0.011,0.041
+2022,Kostanay,Potato,30120,18800,56600,17.0,354,0.72,134,0.007,0.028
+2023,Almaty,Rice,6480,10000,25200,19.8,520,0.70,105,0.008,0.036
